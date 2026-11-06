@@ -1,10 +1,10 @@
 {
   "manifest_version": 3,
-  "name": "Session Switcher 2",
-  "version": "0.1.0",
-  "description": "Save and restore website logins locally, then switch between accounts without logging out.",
+  "name": "Switchly",
+  "version": "1.0.0",
+  "description": "Switch between saved website sessions locally, without logging out.",
   "action": {
-    "default_title": "Session Switcher 2",
+    "default_title": "Switchly",
     "default_popup": "popup.html",
     "default_icon": {
       "16": "icons/icon16.png",

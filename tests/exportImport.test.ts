@@ -43,7 +43,7 @@ function session(id: string, overrides: Partial<Session> = {}, host = 'example.c
 
 function exportJson(sites: Record<string, Session[]>, extra: Record<string, unknown> = {}): string {
   return JSON.stringify({
-    app: 'session-switcher',
+    app: 'switchly',
     formatVersion: 1,
     exportedAt: '2026-11-05T10:00:00.000Z',
     sites,
@@ -64,7 +64,7 @@ describe('createExportFile', () => {
 
     const one = createExportFile(data, 'chatgpt.com');
     expect(Object.keys(one.sites)).toEqual(['chatgpt.com']);
-    expect(one.app).toBe('session-switcher');
+    expect(one.app).toBe('switchly');
     expect(one.formatVersion).toBe(1);
 
     const all = createExportFile(data);
@@ -88,6 +88,15 @@ describe('parseImportJson', () => {
     if (!result.ok) return;
     expect(result.summary).toEqual({ sessionCount: 3, siteCount: 2 });
     expect(result.file.sites['chatgpt.com']).toHaveLength(2);
+  });
+
+  it('accepts legacy session-switcher exports', () => {
+    const result = parseImportJson(
+      exportJson({ 'example.com': [session('one')] }, { app: 'session-switcher' }),
+    );
+    expect(result.ok).toBe(true);
+    if (!result.ok) return;
+    expect(result.file.app).toBe('switchly');
   });
 
   it('normalizes imported host keys', () => {
@@ -247,7 +256,7 @@ describe('mergeImport', () => {
     };
 
     const file = {
-      app: 'session-switcher' as const,
+      app: 'switchly' as const,
       formatVersion: 1 as const,
       exportedAt: '2026-11-05T10:00:00.000Z',
       sites: {

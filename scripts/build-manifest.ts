@@ -16,7 +16,7 @@ const manifest = JSON.parse(readFileSync(resolve('manifest.base.json'), 'utf8'))
 if (target === 'firefox') {
   manifest.browser_specific_settings = {
     gecko: {
-      id: 'session-switcher@local',
+      id: 'switchly@local',
       strict_min_version: '115.0',
       data_collection_permissions: {
         required: ['none'],

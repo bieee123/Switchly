@@ -1,5 +1,5 @@
-export const APP_NAME = 'Session Switcher 2';
-export const APP_ID = 'session-switcher';
+export const APP_NAME = 'Switchly';
+export const APP_ID = 'switchly';
 export const FORMAT_VERSION = 1;
 export const SCHEMA_VERSION = 1;
 export const DATA_KEY = 'ss_data';

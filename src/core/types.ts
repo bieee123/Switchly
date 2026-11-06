@@ -64,7 +64,7 @@ export interface PendingOperation {
 }
 
 export interface ExportFile {
-  app: 'session-switcher';
+  app: 'switchly';
   formatVersion: 1;
   exportedAt: string;
   sites: Record<string, Session[]>;

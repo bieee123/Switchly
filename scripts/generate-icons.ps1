@@ -22,7 +22,7 @@ function New-RoundedRectPath {
     return $path
 }
 
-function New-SessionSwitcherIcon {
+function New-SwitchlyIcon {
     param([int]$Size)
 
     $bitmap = [System.Drawing.Bitmap]::new(
@@ -115,5 +115,5 @@ function New-SessionSwitcherIcon {
 }
 
 foreach ($size in @(16, 32, 48, 128)) {
-    New-SessionSwitcherIcon -Size $size
+    New-SwitchlyIcon -Size $size
 }

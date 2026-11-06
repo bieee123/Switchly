@@ -625,7 +625,7 @@ function downloadExport(file: ExportFile): void {
   const url = URL.createObjectURL(blob);
   const anchor = document.createElement('a');
   anchor.href = url;
-  anchor.download = `session-switcher-${formatExportTimestamp()}.json`;
+  anchor.download = `switchly-${formatExportTimestamp()}.json`;
   anchor.style.display = 'none';
   document.body.append(anchor);
   anchor.click();

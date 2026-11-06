@@ -84,8 +84,8 @@ export function parseImportJson(text: string): ParseImportResult {
   if (!isRecord(raw)) {
     return { ok: false, error: 'The file does not contain an export object.' };
   }
-  if (raw.app !== APP_ID) {
-    return { ok: false, error: 'This file was not exported by Session Switcher.' };
+  if (raw.app !== APP_ID && raw.app !== 'session-switcher') {
+    return { ok: false, error: 'This file was not exported by Switchly.' };
   }
   if (raw.formatVersion !== FORMAT_VERSION) {
     return { ok: false, error: 'This export format version is not supported.' };

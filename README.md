@@ -1,4 +1,4 @@
-# Session Switcher 2
+# Switchly
 
 A local-only browser extension that saves a website's login state (cookies, `localStorage`, and `sessionStorage`) and restores it later. Switch between accounts without logging out.
 
@@ -49,8 +49,8 @@ npm run package        # builds zip/XPI in artifacts/
 
 Packaging uses `web-ext build` for both targets:
 
-- `artifacts/session-switcher-chromium.zip`
-- `artifacts/session-switcher-firefox.xpi`
+- `artifacts/switchly-chromium.zip`
+- `artifacts/switchly-firefox.xpi`
 
 Regenerate icons with:
 
@@ -80,6 +80,7 @@ A few details are stricter than the original plan to prevent data loss:
 ## Privacy and security
 
 - All data stays in `browser.storage.local`. Nothing is uploaded.
+- Full policy: [PRIVACY.md](PRIVACY.md).
 - Session cookies and page storage are stored **unencrypted**. Anyone with access to the browser profile can read them.
 - The extension asks for `<all_urls>` because it can be used on any website.
 - Imported JSON is untrusted input. Host names, session fields, and cookies are validated before anything is written. Prototype-like keys such as `__proto__` are rejected as site names.
