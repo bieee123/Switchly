@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Import sessions — Session Switcher 2</title>
+    <link rel="stylesheet" href="./import.css" />
+  </head>
+  <body>
+    <header class="page-header">
+      <div class="page-header-inner">
+        <div class="brand" id="app-name">Session Switcher 2</div>
+        <h1>Import sessions</h1>
+        <p>Restore a Session Switcher export on this device. Everything stays local.</p>
+      </div>
+    </header>
+
+    <main class="page">
+      <section class="card">
+        <h2>Choose an export file</h2>
+        <p class="muted">
+          Select a <code>.json</code> file created by Session Switcher. Nothing is uploaded.
+        </p>
+
+        <p class="warning">
+          This file contains login cookies and site storage. Anyone with the file can access your
+          accounts. Only import files you exported yourself.
+        </p>
+
+        <label class="file-label" for="file-input">Export file</label>
+        <input id="file-input" class="file-input" type="file" accept=".json,application/json" />
+        <p id="file-name" class="muted" hidden></p>
+
+        <div id="summary" class="summary" hidden>
+          <p id="summary-text"></p>
+          <ul id="site-list"></ul>
+        </div>
+
+        <p id="error" class="message message-error" role="alert" hidden></p>
+        <p id="success" class="message message-success" role="status" hidden></p>
+
+        <div class="actions">
+          <button id="import-button" class="button button-primary" type="button" disabled>
+            Import
+          </button>
+          <button id="close-button" class="button button-neutral" type="button" hidden>
+            Close tab
+          </button>
+        </div>
+      </section>
+
+      <section class="notes">
+        <h2>How import works</h2>
+        <ul>
+          <li>Sessions with the same ID are replaced; new sessions are added.</li>
+          <li>Existing sessions are never deleted by an import.</li>
+          <li>Duplicate order numbers are allowed and sorted by creation time.</li>
+          <li>Imported cookies are not validated against the remote website.</li>
+        </ul>
+        <p>
+          Some websites bind logins to a device, IP address, or browser fingerprint, so an imported
+          session may not work everywhere.
+        </p>
+      </section>
+    </main>
+
+    <script type="module" src="./import.ts"></script>
+  </body>
+</html>
