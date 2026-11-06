@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Session Switcher 2</title>
+    <link rel="stylesheet" href="./popup.css" />
+  </head>
+  <body>
+    <div id="app">
+      <header class="header">
+        <div class="header-info">
+          <div class="app-name" id="app-name">Session Switcher 2</div>
+          <div class="host-label" id="host-label"></div>
+        </div>
+        <div class="header-actions">
+          <button id="view-toggle" class="view-toggle" type="button"></button>
+          <button
+            id="menu-button"
+            class="menu-button"
+            type="button"
+            aria-label="More actions"
+            title="More actions"
+            aria-haspopup="menu"
+            aria-expanded="false"
+            aria-controls="menu"
+          ></button>
+        </div>
+        <div id="menu" class="menu" role="menu" hidden></div>
+      </header>
+
+      <div id="firefox-banner" class="permission-banner" hidden>
+        <span>Session Switcher needs access to websites to read and restore cookies.</span>
+        <button id="grant-access" class="button button-small button-primary" type="button">
+          Grant access
+        </button>
+      </div>
+
+      <main id="content" class="content">
+        <div id="pending-banner" class="pending-banner" hidden>
+          <span id="pending-text"></span>
+          <button id="pending-retry" class="button button-small button-primary" type="button">
+            Retry
+          </button>
+        </div>
+
+        <section id="list-view" class="list-view" hidden></section>
+        <section id="grid-view" class="grid-view" hidden></section>
+
+        <div id="empty-state" class="empty-state" hidden>
+          <p class="empty-title">No saved sessions for this site.</p>
+          <p class="empty-subtitle">
+            Log in, then open the more-actions menu and choose Save Current Session.
+          </p>
+        </div>
+
+        <div id="unsupported-state" class="empty-state" hidden>
+          <p class="empty-title">Open a website to manage sessions.</p>
+          <p class="empty-subtitle">Only normal http and https pages are supported.</p>
+        </div>
+      </main>
+    </div>
+
+    <div id="dialog-root"></div>
+    <div id="toast" class="toast" role="status" aria-live="polite" hidden></div>
+    <script type="module" src="./popup.ts"></script>
+  </body>
+</html>
