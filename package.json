@@ -1,0 +1,44 @@
+{
+  "name": "session-switcher",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Local-only browser extension for switching between saved website sessions.",
+  "engines": {
+    "node": ">=20.19"
+  },
+  "scripts": {
+    "clean": "node scripts/clean.mjs",
+    "build": "npm run clean && npm run build:chromium && npm run build:firefox",
+    "build:chromium": "vite build --mode chromium && tsx scripts/build-manifest.ts chromium",
+    "build:firefox": "vite build --mode firefox && tsx scripts/build-manifest.ts firefox",
+    "dev": "npm run build:chromium",
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint .",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "package": "npm run build && npm run package:chromium && npm run package:firefox",
+    "package:chromium": "web-ext build --source-dir dist/chromium --artifacts-dir artifacts --overwrite-dest --filename session-switcher-chromium.zip",
+    "package:firefox": "web-ext build --source-dir dist/firefox --artifacts-dir artifacts --overwrite-dest --filename session-switcher-firefox.xpi"
+  },
+  "dependencies": {
+    "webextension-polyfill": "^0.12.0"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.39.5",
+    "@types/node": "^22.20.5",
+    "@types/webextension-polyfill": "^0.12.6",
+    "eslint": "^9.39.5",
+    "eslint-config-prettier": "^10.1.8",
+    "globals": "^17.14.0",
+    "prettier": "^3.9.10",
+    "tsx": "^4.23.15",
+    "typescript": "^5.9.3",
+    "typescript-eslint": "^8.72.1",
+    "vite": "^7.3.7",
+    "vitest": "^5.1.0",
+    "web-ext": "^10.8.0"
+  }
+}

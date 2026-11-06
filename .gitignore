@@ -1,0 +1,10 @@
+node_modules/
+dist/
+artifacts/
+coverage/
+*.log
+.DS_Store
+
+# Local planning documents
+docs/PLAN.md
+docs/PLAN-v2.md
